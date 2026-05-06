@@ -1,0 +1,52 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# PDF storage notes
+# ----------------------------------------------------------------------------
+# For the Vercel-hosted preview deploy, PDFs are committed to the repo and
+# shipped as static assets. Vercel's per-file limit of 100 MB accommodates
+# the four sample issues (largest is ~93 MB). GitHub will warn on files
+# above 50 MB; that warning is expected and safe to ignore for these.
+#
+# Once the catalog grows past ~10 issues, or before going to a host with
+# stricter per-file limits (e.g., Cloudflare Pages caps at 25 MB), move
+# PDFs to object storage (R2, Supabase Storage, S3) and uncomment the
+# exclusion rule below to stop tracking them in git.
+# /public/issues/*.pdf
+
+# Cover thumbnails are small (~150 KB each) and safe to commit.
+

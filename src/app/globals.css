@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Archival library palette: warm neutrals on a stone-50 base. */
+  --background: #fafaf9; /* stone-50 */
+  --foreground: #1c1917; /* stone-900 */
+  --muted: #57534e; /* stone-600 */
+  --accent: #44403c; /* stone-700 */
+  --rule: #e7e5e4; /* stone-200 */
+
+  /* Editorial serif stack for headlines. Falls back through historical
+     book typefaces to system fonts. No external font fetch required. */
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino,
+    "Source Serif Pro", "Apple Garamond", Georgia, Cambria, "Times New Roman",
+    Times, serif;
+
+  /* Body and UI default to a clean humanist sans. */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tailwind exposes font-serif via the theme. We override its concrete
+ * font stack here so headlines feel editorial without pulling a webfont. */
+.font-serif {
+  font-family: var(--font-serif);
+  letter-spacing: -0.005em;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Subtle horizontal rule used as a section divider in the editorial spirit. */
+.rule-ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.rule-ornament::before,
+.rule-ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
