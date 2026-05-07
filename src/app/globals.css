@@ -1,59 +1,227 @@
+/* Google Fonts — Cinzel (display), EB Garamond (body), Inter (UI), JetBrains Mono */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   Ordo Templi Archivum — Design Tokens
+   v1.0
+   ============================================================ */
+
 :root {
-  /* Archival library palette: warm neutrals on a stone-50 base. */
-  --background: #fafaf9; /* stone-50 */
-  --foreground: #1c1917; /* stone-900 */
-  --muted: #57534e; /* stone-600 */
-  --accent: #44403c; /* stone-700 */
-  --rule: #e7e5e4; /* stone-200 */
+  /* Core palette */
+  --color-templar-red:        #A4161A;
+  --color-templar-red-dark:   #660708;
+  --color-templar-red-light:  #BA181B;
+  --color-vellum:             #F5EBD9;
+  --color-vellum-warm:        #EDE0C8;
+  --color-cream:              #FAF6EC;
+  --color-iron-gall:          #1B140E;
+  --color-iron-gall-soft:     #3D332A;
+  --color-illumination:       #B08D2E;
+  --color-illumination-soft:  #C9A23F;
+  --color-stone:              #8B8378;
+  --color-seal-wax:           #5C2018;
 
-  /* Editorial serif stack for headlines. Falls back through historical
-     book typefaces to system fonts. No external font fetch required. */
-  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino,
-    "Source Serif Pro", "Apple Garamond", Georgia, Cambria, "Times New Roman",
-    Times, serif;
+  /* Functional */
+  --color-success: #3D5A3D;
+  --color-warning: #8B6914;
+  --color-error:   var(--color-templar-red);
+  --color-info:    #3A4A5C;
 
-  /* Body and UI default to a clean humanist sans. */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  /* Semantic aliases */
+  --color-surface:             var(--color-vellum);
+  --color-surface-elevated:    var(--color-cream);
+  --color-surface-warm:        var(--color-vellum-warm);
+  --color-text:                var(--color-iron-gall);
+  --color-text-secondary:      var(--color-iron-gall-soft);
+  --color-text-muted:          var(--color-stone);
+  --color-text-on-red:         var(--color-vellum);
+  --color-border:              var(--color-vellum-warm);
+  --color-border-strong:       var(--color-stone);
+  --color-border-illuminated:  var(--color-illumination);
+  --color-link:                var(--color-seal-wax);
+  --color-action:              var(--color-templar-red);
+
+  /* Typography */
+  --font-display:    'Cinzel', 'Trajan Pro', Georgia, serif;
+  --font-body:       'EB Garamond', 'Crimson Pro', Georgia, serif;
+  --font-ui:         'Inter', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+  --font-mono:       'JetBrains Mono', Menlo, Consolas, monospace;
+  --font-decorative: 'UnifrakturMaguntia', fantasy;
+
+  /* Type scale */
+  --text-display:    4rem;
+  --text-h1:         3rem;
+  --text-h2:         2.25rem;
+  --text-h3:         1.75rem;
+  --text-h4:         1.375rem;
+  --text-body-large: 1.1875rem;
+  --text-body:       1rem;
+  --text-body-small: 0.875rem;
+  --text-caption:    0.8125rem;
+  --text-overline:   0.75rem;
+
+  /* Spacing */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* Layout */
+  --max-reading: 680px;
+  --max-content: 1200px;
+  --max-wide:    1440px;
+
+  /* Radius */
+  --radius-none:   0;
+  --radius-subtle: 2px;
+  --radius-card:   4px;
+  --radius-pill:   999px;
+
+  /* Shadows */
+  --shadow-parchment:   0 2px 8px rgba(27, 20, 14, 0.08);
+  --shadow-elevated:    0 4px 16px rgba(27, 20, 14, 0.14);
+  --shadow-illuminated: 0 0 24px rgba(176, 141, 46, 0.25);
+  --shadow-seal:        0 1px 1px rgba(92, 32, 24, 0.4);
+
+  /* Motion */
+  --duration-instant:    100ms;
+  --duration-quick:      200ms;
+  --duration-deliberate: 400ms;
+  --duration-ceremonial: 700ms;
+  --duration-reveal:     1200ms;
+
+  --ease-quick:      cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-ceremonial: cubic-bezier(0.65, 0.0, 0.35, 1);
+  --ease-decisive:   cubic-bezier(0.85, 0.0, 0.15, 1);
+  --ease-out-soft:   cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
-html {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-sans);
+/* ============================================================
+   DARK MODE — Candlelit Reading
+   ============================================================ */
+
+[data-theme="night"] {
+  --color-vellum:           #1F1813;
+  --color-vellum-warm:      #2A211B;
+  --color-cream:            #2A211B;
+  --color-iron-gall:        #F0E6D2;
+  --color-iron-gall-soft:   #C8BCA5;
+  --color-stone:            #6E6657;
+  --color-illumination:     #C9A23F;
+  --color-templar-red-dark: #BA181B;
+  --shadow-parchment:       0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-elevated:        0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-illuminated:     0 0 24px rgba(201, 162, 63, 0.35);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes cross-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
-/* Tailwind exposes font-serif via the theme. We override its concrete
- * font stack here so headlines feel editorial without pulling a webfont. */
-.font-serif {
-  font-family: var(--font-serif);
-  letter-spacing: -0.005em;
+@keyframes manuscript-reveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes seal-stamp {
+  0%   { transform: scale(1.4); opacity: 0; filter: drop-shadow(0 0 0 rgba(164, 22, 26, 0)); }
+  60%  { transform: scale(0.96); opacity: 1; filter: drop-shadow(0 0 12px rgba(164, 22, 26, 0.6)); }
+  100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 1px 1px rgba(92, 32, 24, 0.4)); }
+}
+
+@keyframes illuminate {
+  from { box-shadow: 0 0 0 0 rgba(176, 141, 46, 0); }
+  to   { box-shadow: 0 0 24px 0 rgba(176, 141, 46, 0.25); }
+}
+
+@keyframes ink-bleed {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-/* Subtle horizontal rule used as a section divider in the editorial spirit. */
+/* ============================================================
+   BASE ELEMENT STYLES
+   ============================================================ */
+
+@layer base {
+  html {
+    color: var(--color-text);
+    background: var(--color-surface);
+    font-family: var(--font-body);
+    font-size: 16px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-illumination);
+    outline-offset: 2px;
+    border-radius: var(--radius-subtle);
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color var(--duration-quick) var(--ease-quick);
+  }
+
+  a:hover {
+    color: var(--color-templar-red);
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+/* Gold rule divider — the system's signature architectural element */
+.rule-gold {
+  border: 0;
+  border-top: 1px solid var(--color-illumination);
+  opacity: 0.6;
+}
+
+/* Section ornament divider with centered text */
 .rule-ornament {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: var(--muted);
+  color: var(--color-text-muted);
+  font-family: var(--font-ui);
   font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -62,5 +230,45 @@ body {
   content: "";
   flex: 1;
   height: 1px;
-  background: var(--rule);
+  background: var(--color-illumination);
+  opacity: 0.45;
+}
+
+/* Overline label — eyebrow text, breadcrumbs, section markers */
+.overline {
+  font-family: var(--font-ui);
+  font-size: var(--text-overline);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Manuscript reveal entrance animation */
+.reveal {
+  animation: manuscript-reveal var(--duration-ceremonial) var(--ease-out-soft);
+}
+
+/* Cross Pattée loading spinner */
+.spinner-cross {
+  animation: cross-rotate 2.4s linear infinite;
+  color: var(--color-templar-red);
+}
+
+/* Issue card hover — gold border lift, defined here so no "use client" is needed */
+.card-archive {
+  transition:
+    border-color var(--duration-deliberate) var(--ease-quick),
+    box-shadow var(--duration-deliberate) var(--ease-quick);
+}
+.card-archive:hover {
+  border-color: var(--color-illumination);
+  box-shadow: var(--shadow-illuminated);
+}
+
+/* Text balance utility */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }

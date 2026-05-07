@@ -43,22 +43,30 @@ export default function HomePage({ searchParams }: HomePageProps) {
   const visibleIssues = filterIssues(allIssues, filters);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-      <section className="mb-10 max-w-3xl">
-        <p className="mb-3 text-xs uppercase tracking-[0.22em] text-stone-500">
-          Digital Archive
-        </p>
-        <h1 className="font-serif text-4xl leading-tight text-stone-900 text-balance sm:text-5xl">
+    <div
+      className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14"
+    >
+      {/* Page header */}
+      <section className="mb-10" style={{ maxWidth: "var(--max-reading)" }}>
+        <p className="overline mb-3">Digital Archive</p>
+        <h1
+          className="font-display font-medium text-iron-gall text-balance"
+          style={{ fontSize: "var(--text-h1)", lineHeight: 1.1 }}
+        >
           Knight&rsquo;s Templar Magazine
         </h1>
-        <p className="mt-4 text-base leading-relaxed text-stone-600">
-          A searchable archive of <em>Knight Templar</em>, the quarterly publication of the
-          Grand Encampment of Knights Templar of the United States of America. Browse by
-          season, search across articles and issue contents, and open the full PDF of any
-          issue.
+        <p
+          className="mt-4 font-body text-iron-gall-soft leading-relaxed"
+          style={{ fontSize: "var(--text-body-large)" }}
+        >
+          A searchable archive of <em>Knight Templar</em>, the quarterly publication of
+          the Grand Encampment of Knights Templar of the United States of America.
+          Browse by season, search across articles and issue contents, and read any
+          issue in full.
         </p>
       </section>
 
+      {/* Filter bar */}
       <Suspense fallback={null}>
         <IssueFilters
           years={years}
@@ -68,6 +76,7 @@ export default function HomePage({ searchParams }: HomePageProps) {
         />
       </Suspense>
 
+      {/* Issue grid */}
       <section className="mt-8">
         {visibleIssues.length === 0 ? (
           <EmptyState />

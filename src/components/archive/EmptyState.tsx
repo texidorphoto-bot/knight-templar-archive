@@ -1,29 +1,51 @@
 import Link from "next/link";
-import { BookOpen } from "lucide-react";
+import { CrossPattee } from "@/components/icons/CrossPattee";
 
 type EmptyStateProps = {
   title?: string;
   description?: string;
-  /** When provided, renders a small reset link below the description. */
   resetHref?: string;
 };
 
 export function EmptyState({
-  title = "No issues match your filters",
-  description = "Try a broader search term, or clear your filters to see the full archive.",
+  title = "No records bear this entry.",
+  description = "Refine your search, or browse collections below.",
   resetHref = "/",
 }: EmptyStateProps) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-stone-300 bg-white px-6 py-16 text-center">
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-stone-100 text-stone-500">
-        <BookOpen className="h-6 w-6" aria-hidden="true" />
+    <div
+      className="flex flex-col items-center justify-center bg-cream text-center"
+      style={{
+        border: "1px dashed var(--color-illumination)",
+        borderRadius: "var(--radius-card)",
+        padding: "var(--space-9) var(--space-6)",
+        opacity: 0.9,
+      }}
+    >
+      <div className="mb-5" style={{ opacity: 0.35 }}>
+        <CrossPattee className="h-10 w-10 text-templar-red" aria-hidden="true" />
       </div>
-      <h3 className="font-serif text-xl text-stone-900">{title}</h3>
-      <p className="mt-2 max-w-md text-sm text-stone-600">{description}</p>
+      <h3
+        className="font-display font-medium text-iron-gall"
+        style={{ fontSize: "var(--text-h3)" }}
+      >
+        {title}
+      </h3>
+      <p
+        className="mt-2 font-body text-iron-gall-soft"
+        style={{ fontSize: "var(--text-body)", maxWidth: "38ch" }}
+      >
+        {description}
+      </p>
       {resetHref ? (
         <Link
           href={resetHref}
-          className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-stone-800 underline underline-offset-4 hover:text-stone-950"
+          className="mt-6 font-ui font-medium text-seal-wax no-underline hover:text-templar-red hover:underline"
+          style={{
+            fontSize: "0.875rem",
+            textUnderlineOffset: "3px",
+            transitionDuration: "var(--duration-quick)",
+          }}
         >
           Clear filters
         </Link>

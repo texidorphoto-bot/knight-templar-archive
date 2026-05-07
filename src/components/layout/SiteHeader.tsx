@@ -1,42 +1,64 @@
 import Link from "next/link";
-import { BookOpen } from "lucide-react";
+import { CrossPattee } from "@/components/icons/CrossPattee";
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-stone-200 bg-stone-50/80 backdrop-blur supports-[backdrop-filter]:bg-stone-50/60">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-        <Link href="/" className="group flex items-center gap-3" aria-label="Home">
-          <span
-            aria-hidden="true"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-white text-stone-800 shadow-sm transition-colors group-hover:border-stone-700"
-          >
-            <BookOpen className="h-4 w-4" />
-          </span>
-          <span className="flex flex-col leading-tight">
-            <span className="font-serif text-lg text-stone-900">
-              Knight&rsquo;s Templar Magazine
-            </span>
-            <span className="text-xs uppercase tracking-[0.18em] text-stone-500">
-              Digital Archive
-            </span>
-          </span>
-        </Link>
-
-        <nav aria-label="Primary" className="flex items-center gap-5 text-sm">
+    <>
+      <header
+        className="bg-cream border-b border-vellum-warm"
+        style={{ height: "64px" }}
+      >
+        <div
+          className="mx-auto flex h-full max-w-6xl items-center justify-between px-4 sm:px-6"
+        >
+          {/* Wordmark */}
           <Link
             href="/"
-            className="text-stone-700 underline-offset-4 hover:text-stone-950 hover:underline"
+            className="group flex items-center gap-3"
+            aria-label="The Templar Archive — home"
           >
-            Archive
+            <CrossPattee
+              className="h-8 w-8 text-templar-red transition-colors duration-quick ease-quick group-hover:text-templar-red-dark"
+              aria-hidden="true"
+            />
+            <span className="flex flex-col leading-tight">
+              <span
+                className="font-display font-medium text-iron-gall tracking-wide"
+                style={{ fontSize: "1.0625rem", fontVariant: "small-caps", letterSpacing: "0.04em" }}
+              >
+                The Templar Archive
+              </span>
+              <span
+                className="font-ui text-cloister-stone"
+                style={{ fontSize: "0.6875rem", letterSpacing: "0.18em", textTransform: "uppercase" }}
+              >
+                Custodes Memoriae
+              </span>
+            </span>
           </Link>
-          <Link
-            href="/about"
-            className="text-stone-700 underline-offset-4 hover:text-stone-950 hover:underline"
-          >
-            About
-          </Link>
-        </nav>
-      </div>
-    </header>
+
+          {/* Primary navigation */}
+          <nav aria-label="Primary" className="flex items-center gap-6">
+            <Link
+              href="/"
+              className="font-ui text-iron-gall-soft no-underline transition-colors duration-quick ease-quick hover:text-iron-gall"
+              style={{ fontSize: "0.875rem" }}
+            >
+              Archive
+            </Link>
+            <Link
+              href="/about"
+              className="font-ui text-iron-gall-soft no-underline transition-colors duration-quick ease-quick hover:text-iron-gall"
+              style={{ fontSize: "0.875rem" }}
+            >
+              About
+            </Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* Signature gold rule beneath masthead — appears once per page */}
+      <div className="rule-gold w-full" aria-hidden="true" />
+    </>
   );
 }

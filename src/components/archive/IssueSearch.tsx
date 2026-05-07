@@ -4,25 +4,17 @@ import { Search, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 type IssueSearchProps = {
-  /** Current value of the search input from the URL. */
   initialValue?: string;
-  /** Called when the user submits a new search query. */
   onSubmit: (value: string) => void;
-  /** Aria-label for the input. */
   label?: string;
   placeholder?: string;
 };
 
-/**
- * Search field with debounced submission. Keeps the visible input
- * in sync with the URL state when the URL changes externally
- * (e.g., via the Clear filters link).
- */
 export function IssueSearch({
   initialValue = "",
   onSubmit,
-  label = "Search the archive",
-  placeholder = "Search by title, topic, article, or text…",
+  label = "Search the Archive",
+  placeholder = "Search the Archive — title, topic, article, or text",
 }: IssueSearchProps) {
   const [value, setValue] = useState(initialValue);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -50,7 +42,7 @@ export function IssueSearch({
         {label}
       </label>
       <Search
-        className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-500"
+        className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cloister-stone"
         aria-hidden="true"
       />
       <input
@@ -63,7 +55,25 @@ export function IssueSearch({
           scheduleSubmit(next);
         }}
         placeholder={placeholder}
-        className="w-full rounded-full border border-stone-300 bg-white py-2.5 pl-10 pr-10 text-sm text-stone-900 shadow-sm placeholder:text-stone-400 focus:border-stone-700 focus:outline-none focus:ring-2 focus:ring-stone-700/40"
+        className="w-full bg-cream text-iron-gall placeholder:text-cloister-stone font-ui"
+        style={{
+          border: "1px solid var(--color-border-strong)",
+          borderRadius: "var(--radius-subtle)",
+          padding: "0.625rem 2.5rem 0.625rem 2.5rem",
+          fontSize: "0.875rem",
+          outline: "none",
+          transition: `border-color var(--duration-quick) var(--ease-quick), box-shadow var(--duration-quick) var(--ease-quick)`,
+        }}
+        onFocus={(e) => {
+          e.currentTarget.style.borderColor = "var(--color-illumination)";
+          e.currentTarget.style.borderBottomWidth = "2px";
+          e.currentTarget.style.boxShadow = "0 1px 0 0 var(--color-illumination)";
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.borderColor = "";
+          e.currentTarget.style.borderBottomWidth = "";
+          e.currentTarget.style.boxShadow = "";
+        }}
       />
       {value ? (
         <button
@@ -72,7 +82,8 @@ export function IssueSearch({
             setValue("");
             onSubmit("");
           }}
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700"
+          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-subtle p-1 text-cloister-stone transition-colors hover:bg-vellum-warm hover:text-iron-gall"
+          style={{ transitionDuration: "var(--duration-quick)" }}
           aria-label="Clear search"
         >
           <X className="h-4 w-4" aria-hidden="true" />

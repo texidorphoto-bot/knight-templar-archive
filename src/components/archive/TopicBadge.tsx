@@ -3,30 +3,38 @@ import { cn } from "@/lib/utils";
 
 type TopicBadgeProps = {
   topic: string;
-  /** When provided, the badge becomes a link to a filtered archive view. */
   href?: string;
   className?: string;
 };
 
-/**
- * Compact pill rendering a topic label. Used on cards, the detail page,
- * and inside the filter bar. Wrap in a Link when used inline so users
- * can drill from a topic to a filtered archive view.
- */
 export function TopicBadge({ topic, href, className }: TopicBadgeProps) {
+  const base =
+    "inline-flex items-center border border-vellum-warm bg-vellum font-ui text-iron-gall-soft transition-colors";
   const styles = cn(
-    "inline-flex items-center rounded-full border border-stone-300 bg-stone-100 px-2.5 py-0.5 text-xs font-medium text-stone-700 transition-colors",
-    href && "hover:border-stone-500 hover:bg-stone-200 hover:text-stone-900",
+    base,
+    href && "hover:border-illumination hover:text-iron-gall cursor-pointer",
     className
   );
 
+  const inlineStyles = {
+    fontSize: "0.75rem",
+    padding: "0.1875rem 0.625rem",
+    borderRadius: "var(--radius-pill)",
+    transitionDuration: "var(--duration-quick)",
+    transitionTimingFunction: "var(--ease-quick)",
+  };
+
   if (href) {
     return (
-      <Link href={href} className={styles}>
+      <Link href={href} className={styles} style={inlineStyles}>
         {topic}
       </Link>
     );
   }
 
-  return <span className={styles}>{topic}</span>;
+  return (
+    <span className={styles} style={inlineStyles}>
+      {topic}
+    </span>
+  );
 }

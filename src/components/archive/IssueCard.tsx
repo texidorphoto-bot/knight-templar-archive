@@ -1,13 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import type { Issue } from "@/lib/types";
 import { TopicBadge } from "@/components/archive/TopicBadge";
 import { formatPublicationLabel } from "@/lib/utils";
 
 type IssueCardProps = {
   issue: Issue;
-  /** Optional excerpt to surface as a search snippet under the description. */
   searchSnippet?: string | null;
 };
 
@@ -18,11 +17,16 @@ export function IssueCard({ issue, searchSnippet }: IssueCardProps) {
   const remainingTopics = issue.topics.length - visibleTopics.length;
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-stone-400 hover:shadow-md focus-within:ring-2 focus-within:ring-stone-700">
+    <article
+      className="card-archive group flex h-full flex-col overflow-hidden bg-cream border border-vellum-warm shadow-parchment focus-within:outline focus-within:outline-2 focus-within:outline-illumination"
+      style={{ borderRadius: "var(--radius-card)" }}
+    >
+      {/* Cover image */}
       <Link
         href={href}
-        className="relative aspect-[935/1210] w-full overflow-hidden bg-stone-100"
+        className="relative block aspect-[935/1210] w-full overflow-hidden bg-vellum-warm"
         aria-label={`Open ${issue.title}`}
+        tabIndex={-1}
       >
         {issue.coverImageUrl ? (
           <Image
@@ -30,56 +34,89 @@ export function IssueCard({ issue, searchSnippet }: IssueCardProps) {
             alt={`${issue.title} cover`}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            className="object-cover transition-transform group-hover:scale-[1.015]"
+            style={{ transitionDuration: "var(--duration-ceremonial)", transitionTimingFunction: "var(--ease-quick)" }}
             priority={false}
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-stone-400">
+          <div className="flex h-full w-full items-center justify-center text-cloister-stone">
             <FileText className="h-10 w-10" aria-hidden="true" />
             <span className="sr-only">No cover image available</span>
           </div>
         )}
+        {/* Single-pixel gold rule below cover, per §7.2 */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-px"
+          style={{ background: "var(--color-illumination)", opacity: 0.45 }}
+          aria-hidden="true"
+        />
       </Link>
 
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <div className="flex items-center justify-between text-xs uppercase tracking-wide text-stone-500">
+        {/* Date and volume overline */}
+        <div
+          className="flex items-center justify-between font-ui text-cloister-stone"
+          style={{ fontSize: "0.75rem", letterSpacing: "0.08em", textTransform: "uppercase" }}
+        >
           <span>{dateLabel}</span>
           {issue.volume ? <span>Vol. {issue.volume}</span> : null}
         </div>
 
-        <h3 className="font-serif text-xl leading-snug text-stone-900">
-          <Link href={href} className="hover:underline underline-offset-4">
+        {/* Title in Cinzel H4 */}
+        <h3
+          className="font-display font-medium leading-snug text-iron-gall"
+          style={{ fontSize: "var(--text-h4)" }}
+        >
+          <Link
+            href={href}
+            className="no-underline hover:underline"
+            style={{ textDecorationColor: "var(--color-illumination)", textUnderlineOffset: "3px" }}
+          >
             {issue.title}
           </Link>
         </h3>
 
-        <p className="line-clamp-3 text-sm leading-relaxed text-stone-600">
+        {/* Description in EB Garamond */}
+        <p
+          className="line-clamp-3 font-body text-iron-gall-soft leading-relaxed"
+          style={{ fontSize: "0.9375rem" }}
+        >
           {issue.description}
         </p>
 
+        {/* Search snippet */}
         {searchSnippet ? (
-          <p className="rounded-md border border-stone-200 bg-stone-50 px-3 py-2 text-xs italic leading-relaxed text-stone-600">
+          <p
+            className="rounded border border-vellum-warm bg-vellum px-3 py-2 font-body italic leading-relaxed text-iron-gall-soft"
+            style={{ fontSize: "0.875rem" }}
+          >
             {searchSnippet}
           </p>
         ) : null}
 
+        {/* Topic badges */}
         <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
           {visibleTopics.map((topic) => (
             <TopicBadge key={topic} topic={topic} />
           ))}
           {remainingTopics > 0 ? (
-            <span className="inline-flex items-center rounded-full border border-stone-200 bg-stone-50 px-2 py-0.5 text-xs text-stone-500">
+            <span
+              className="inline-flex items-center border border-vellum-warm bg-vellum font-ui text-cloister-stone"
+              style={{ fontSize: "0.75rem", padding: "0.125rem 0.625rem", borderRadius: "var(--radius-pill)" }}
+            >
               +{remainingTopics}
             </span>
           ) : null}
         </div>
 
+        {/* CTA link */}
         <Link
           href={href}
-          className="mt-1 inline-flex items-center gap-1 text-sm font-medium text-stone-800 underline-offset-4 hover:underline"
+          className="mt-2 inline-flex items-center gap-1.5 font-ui font-medium text-seal-wax no-underline transition-colors hover:text-templar-red"
+          style={{ fontSize: "0.875rem", transitionDuration: "var(--duration-quick)" }}
         >
-          Read Issue
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          Open Issue
+          <span aria-hidden="true" className="text-illumination">›</span>
         </Link>
       </div>
     </article>
