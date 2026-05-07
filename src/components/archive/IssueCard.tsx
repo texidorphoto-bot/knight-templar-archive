@@ -48,11 +48,6 @@ export function IssueCard({ issue, searchSnippet, query = "" }: IssueCardProps) 
             <span className="sr-only">No cover image available</span>
           </div>
         )}
-        {/* Codex save button — top right over cover */}
-        <div className="absolute right-2 top-2 z-10">
-          <CodexButton slug={issue.slug} variant="compact" />
-        </div>
-
         {/* Single-pixel gold rule below cover, per §7.2 */}
         <div
           className="absolute bottom-0 left-0 right-0 h-px"
@@ -118,15 +113,18 @@ export function IssueCard({ issue, searchSnippet, query = "" }: IssueCardProps) 
           ) : null}
         </div>
 
-        {/* CTA link */}
-        <Link
-          href={href}
-          className="mt-2 inline-flex items-center gap-1.5 font-ui font-medium text-seal-wax no-underline transition-colors hover:text-templar-red"
-          style={{ fontSize: "0.875rem", transitionDuration: "var(--duration-quick)" }}
-        >
-          Open the issue
-          <span aria-hidden="true" className="text-illumination">›</span>
-        </Link>
+        {/* CTA row: open link + codex button */}
+        <div className="mt-2 flex items-center justify-between">
+          <Link
+            href={href}
+            className="inline-flex items-center gap-1.5 font-ui font-medium text-seal-wax no-underline transition-colors hover:text-templar-red"
+            style={{ fontSize: "0.875rem", transitionDuration: "var(--duration-quick)" }}
+          >
+            Open the issue
+            <span aria-hidden="true" className="text-illumination">›</span>
+          </Link>
+          <CodexButton slug={issue.slug} variant="compact" />
+        </div>
       </div>
     </article>
   );
