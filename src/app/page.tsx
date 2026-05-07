@@ -52,7 +52,7 @@ export default function HomePage({ searchParams }: HomePageProps) {
           className="font-display font-medium text-iron-gall text-balance"
           style={{ fontSize: "var(--text-h1)", lineHeight: 1.1 }}
         >
-          Knights Templar Magazine
+          Knight Templar Magazine
         </h1>
         <p
           className="mt-4 font-body text-iron-gall-soft leading-relaxed"

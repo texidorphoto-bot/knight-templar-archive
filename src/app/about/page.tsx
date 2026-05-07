@@ -80,7 +80,7 @@ export default function AboutPage() {
           Custody and copyright
         </h2>
         <p>
-          Knights Templar Magazine is the property of the Grand Encampment of Knights
+          Knight Templar Magazine is the property of the Grand Encampment of Knights
           Templar of the United States of America. This archive serves the publication
           as custodian and reading aid; original copyright remains with the publishers
           and authors.

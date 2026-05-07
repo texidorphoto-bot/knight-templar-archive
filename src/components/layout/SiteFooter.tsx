@@ -19,14 +19,14 @@ export function SiteFooter() {
                 className="font-display font-medium text-iron-gall"
                 style={{ fontSize: "0.9375rem", fontVariant: "small-caps", letterSpacing: "0.04em" }}
               >
-                Knights Templar Magazine · The Archive
+                Knight Templar Magazine · The Archive
               </span>
             </div>
             <p
               className="font-body text-iron-gall-soft leading-relaxed"
               style={{ fontSize: "0.9375rem", maxWidth: "36ch" }}
             >
-              The official archive of Knights Templar Magazine, kept on behalf of the
+              The official archive of Knight Templar Magazine, kept on behalf of the
               Grand Encampment of Knights Templar of the United States of America.
             </p>
           </div>

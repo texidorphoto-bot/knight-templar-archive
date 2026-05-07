@@ -8,15 +8,15 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   ),
   title: {
-    default: "The Templar Archive: Knights Templar Magazine",
+    default: "The Templar Archive: Knight Templar Magazine",
     template: "%s — The Templar Archive",
   },
   description:
-    "A searchable archive of Knights Templar Magazine, the quarterly publication of the Grand Encampment of Knights Templar of the United States of America.",
+    "A searchable archive of Knight Templar Magazine, the quarterly publication of the Grand Encampment of Knights Templar of the United States of America.",
   openGraph: {
-    title: "The Templar Archive: Knights Templar Magazine",
+    title: "The Templar Archive: Knight Templar Magazine",
     description:
-      "Read, search, and cite every issue of Knights Templar Magazine in one searchable archive.",
+      "Read, search, and cite every issue of Knight Templar Magazine in one searchable archive.",
     type: "website",
   },
 };

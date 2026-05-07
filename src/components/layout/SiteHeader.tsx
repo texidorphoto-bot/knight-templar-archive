@@ -27,7 +27,7 @@ export function SiteHeader() {
                 className="font-display font-medium text-iron-gall tracking-wide"
                 style={{ fontSize: "1.0625rem", fontVariant: "small-caps", letterSpacing: "0.04em" }}
               >
-                Knights Templar Magazine
+                Knight Templar Magazine
               </span>
               <span
                 className="font-ui text-cloister-stone"
