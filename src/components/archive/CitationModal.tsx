@@ -156,7 +156,7 @@ export function CitationModal({ issue, open, onClose }: CitationModalProps) {
           {copied ? (
             <>
               <CrossPattee className="h-4 w-4 seal-stamp" aria-hidden="true" />
-              So recorded
+              Copied to clipboard
             </>
           ) : (
             <>

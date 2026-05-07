@@ -28,7 +28,7 @@ export function CitationTrigger({ issue }: CitationTriggerProps) {
         aria-label={`Cite ${issue.title}`}
       >
         <BookOpen className="h-4 w-4" aria-hidden="true" />
-        Cite
+        Cite this issue
       </button>
 
       <CitationModal issue={issue} open={open} onClose={() => setOpen(false)} />

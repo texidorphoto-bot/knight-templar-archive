@@ -97,10 +97,10 @@ export function IssueFilters({
         className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-vellum-warm pt-3"
       >
         <p className="font-ui text-cloister-stone" style={{ fontSize: "0.75rem" }}>
-          Showing{" "}
+          Reading{" "}
           <span className="font-medium text-iron-gall">{visibleCount}</span> of{" "}
           <span className="font-medium text-iron-gall">{totalCount}</span>{" "}
-          {totalCount === 1 ? "issue" : "issues"}
+          {totalCount === 1 ? "issue" : "issues"} from the record.
         </p>
         {isFiltered ? (
           <Link

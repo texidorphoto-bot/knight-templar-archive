@@ -58,7 +58,7 @@ export default function IssueDetailPage({ params }: PageProps) {
         style={{ fontSize: "0.875rem", textUnderlineOffset: "3px", transitionDuration: "var(--duration-quick)" }}
       >
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-        Back to archive
+        Return to the Archive
       </Link>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,260px)_1fr]">
@@ -187,8 +187,7 @@ export default function IssueDetailPage({ params }: PageProps) {
             fontSize: "0.875rem",
           }}
         >
-          This issue&rsquo;s text layer is missing or low-quality. Search results may be
-          incomplete until the PDF is re-processed with OCR.
+          This issue is being recovered. Search will return more results once the text layer is restored.
         </p>
       ) : null}
 

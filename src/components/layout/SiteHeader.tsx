@@ -27,13 +27,13 @@ export function SiteHeader() {
                 className="font-display font-medium text-iron-gall tracking-wide"
                 style={{ fontSize: "1.0625rem", fontVariant: "small-caps", letterSpacing: "0.04em" }}
               >
-                The Templar Archive
+                Knights Templar Magazine
               </span>
               <span
                 className="font-ui text-cloister-stone"
                 style={{ fontSize: "0.6875rem", letterSpacing: "0.18em", textTransform: "uppercase" }}
               >
-                Custodes Memoriae
+                The Archive · Vol. I–Vol. LXXI
               </span>
             </span>
           </Link>
@@ -47,7 +47,7 @@ export function SiteHeader() {
               className="font-ui text-iron-gall-soft no-underline transition-colors duration-quick ease-quick hover:text-iron-gall"
               style={{ fontSize: "0.875rem" }}
             >
-              Archive
+              The Archive
             </Link>
             <Link
               href="/codex"

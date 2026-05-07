@@ -48,21 +48,20 @@ export default function HomePage({ searchParams }: HomePageProps) {
     >
       {/* Page header */}
       <section className="mb-10" style={{ maxWidth: "var(--max-reading)" }}>
-        <p className="overline mb-3">Digital Archive</p>
+        <p className="overline mb-3">The Archive · Vol. I–Vol. LXXI</p>
         <h1
           className="font-display font-medium text-iron-gall text-balance"
           style={{ fontSize: "var(--text-h1)", lineHeight: 1.1 }}
         >
-          Knight&rsquo;s Templar Magazine
+          Knights Templar Magazine
         </h1>
         <p
           className="mt-4 font-body text-iron-gall-soft leading-relaxed"
           style={{ fontSize: "var(--text-body-large)" }}
         >
-          A searchable archive of <em>Knight Templar</em>, the quarterly publication of
-          the Grand Encampment of Knights Templar of the United States of America.
-          Browse by season, search across articles and issue contents, and read any
-          issue in full.
+          Seventy years of correspondence, ritual, and reflection from the Grand
+          Encampment of Knights Templar of the United States of America. Every issue,
+          kept and made searchable, in one home worthy of the record.
         </p>
       </section>
 

@@ -108,7 +108,7 @@ export function MagazineViewer({ pdfUrl, title, downloadName }: Props) {
           className="font-ui text-iron-gall-soft"
           style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}
         >
-          Read full issue
+          The full issue
         </h2>
         <div className="flex items-center gap-4">
           <a
@@ -156,7 +156,7 @@ export function MagazineViewer({ pdfUrl, title, downloadName }: Props) {
           error={
             <div className="flex h-48 flex-col items-center justify-center gap-3">
               <p className="font-body text-iron-gall-soft" style={{ fontSize: "0.9375rem" }}>
-                Could not load the PDF.
+                Could not load the issue.
               </p>
               <a
                 href={pdfUrl}

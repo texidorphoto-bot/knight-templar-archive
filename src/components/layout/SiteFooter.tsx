@@ -19,16 +19,15 @@ export function SiteFooter() {
                 className="font-display font-medium text-iron-gall"
                 style={{ fontSize: "0.9375rem", fontVariant: "small-caps", letterSpacing: "0.04em" }}
               >
-                The Templar Archive
+                Knights Templar Magazine · The Archive
               </span>
             </div>
             <p
               className="font-body text-iron-gall-soft leading-relaxed"
               style={{ fontSize: "0.9375rem", maxWidth: "36ch" }}
             >
-              A research archive of{" "}
-              <em>Knight Templar</em>, the quarterly publication of the Grand
-              Encampment of Knights Templar of the United States of America.
+              The official archive of Knights Templar Magazine, kept on behalf of the
+              Grand Encampment of Knights Templar of the United States of America.
             </p>
           </div>
 
@@ -42,7 +41,7 @@ export function SiteFooter() {
               className="font-ui text-iron-gall-soft no-underline transition-colors duration-quick hover:text-iron-gall"
               style={{ fontSize: "0.875rem" }}
             >
-              Archive
+              The Archive
             </Link>
             <Link
               href="/codex"
@@ -70,7 +69,7 @@ export function SiteFooter() {
             className="font-ui text-cloister-stone"
             style={{ fontSize: "0.75rem", letterSpacing: "0.08em", textTransform: "uppercase" }}
           >
-            Non Nobis, Domine, Non Nobis, Sed Nomini Tuo Da Gloriam
+            Custodes Memoriae
           </p>
           <p
             className="font-ui text-cloister-stone"

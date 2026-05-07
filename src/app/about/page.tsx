@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 export const metadata = {
   title: "About",
   description:
-    "About The Templar Archive — sources, contribution, and how the archive is maintained.",
+    "About The Templar Archive: how issues enter the record, and how to contribute one we are missing.",
 };
 
 export default function AboutPage() {
@@ -16,7 +16,7 @@ export default function AboutPage() {
         style={{ fontSize: "0.875rem", textUnderlineOffset: "3px", transitionDuration: "var(--duration-quick)" }}
       >
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-        Back to archive
+        Return to the Archive
       </Link>
 
       <p className="overline mb-3">About</p>
@@ -24,7 +24,7 @@ export default function AboutPage() {
         className="font-display font-medium text-iron-gall text-balance"
         style={{ fontSize: "var(--text-h1)", lineHeight: 1.1 }}
       >
-        A research archive of <em style={{ fontFamily: "var(--font-body)", fontStyle: "italic" }}>Knight Templar</em> magazine.
+        Keeping the record.
       </h1>
 
       <div
@@ -32,57 +32,58 @@ export default function AboutPage() {
         style={{ fontSize: "var(--text-body-large)" }}
       >
         <p className="mb-5">
-          The Templar Archive is a searchable home for back issues of{" "}
-          <em>Knight Templar</em>, the quarterly publication of the Grand Encampment
-          of Knights Templar of the United States of America. The magazine has been
-          published continuously across decades, and is currently produced by Laughing
-          Lion LLC under managing editor Ben Williams.
+          The Templar Archive is the official home for back issues of Knights Templar
+          Magazine, the quarterly publication of the Grand Encampment of Knights
+          Templar of the United States of America. Published continuously for more
+          than seventy volumes and now produced by Laughing Lion LLC under managing
+          editor Ben Williams, the magazine reaches over 65,000 households nationwide.
+          This archive keeps every issue in one place: searchable, readable, citable,
+          and built to last.
         </p>
         <p className="mb-8">
-          Each issue in the archive includes a cover thumbnail, publication date,
-          volume and issue label, an editorial summary, the cover-feature article list,
-          topical tags for navigation, and the full PDF for in-browser reading or
-          download.
+          Each issue carries a cover, publication date, volume and issue label, an
+          editorial summary, the cover-feature article list, topical tags, and the
+          full issue itself, ready to read or download.
         </p>
 
         <h2
           className="font-display font-medium text-iron-gall mb-4"
           style={{ fontSize: "var(--text-h2)", lineHeight: 1.15 }}
         >
-          How the archive is sourced
+          How issues enter the record
         </h2>
         <p className="mb-8">
-          Issues are added one at a time. Each PDF is placed in the archive&rsquo;s
-          assets, a cover thumbnail is generated from page one, the body text is
-          extracted for search, and the metadata record is written to the catalog.
-          As the collection grows, that workflow will move to a managed database with
-          object storage; the visible experience will not change.
+          Issues enter the archive one at a time. The publication is given a permanent
+          home, a cover is taken from page one, the body text is extracted so the
+          issue can be searched, and a metadata record is added to the catalog. As the
+          catalog grows, this workflow moves to a managed database and object storage;
+          the visible experience does not change.
         </p>
 
         <h2
           className="font-display font-medium text-iron-gall mb-4"
           style={{ fontSize: "var(--text-h2)", lineHeight: 1.15 }}
         >
-          Contributing a missing issue
+          If you have an issue we are missing
         </h2>
         <p className="mb-8">
-          If you have an issue not yet in the archive, please contact the project
-          maintainer. We accept original PDFs, scanned PDFs, and (with permission)
-          digital reproductions from official Templar sources. Scanned issues without
-          a text layer will be re-processed with OCR before they appear in search
-          results.
+          If you hold an issue not yet in the archive, please contact the project
+          maintainer. Original PDFs, scanned PDFs, and digital reproductions from
+          official Templar sources are all welcome. Scanned issues without a text
+          layer will be recovered with OCR before they appear in search results.
         </p>
 
         <h2
           className="font-display font-medium text-iron-gall mb-4"
           style={{ fontSize: "var(--text-h2)", lineHeight: 1.15 }}
         >
-          A note on attribution
+          Custody and copyright
         </h2>
         <p>
-          <em>Knight Templar</em> is the property of the Grand Encampment of Knights
-          Templar of the United States of America. This archive is a research and
-          reading aid; original copyright remains with the publishers and authors.
+          Knights Templar Magazine is the property of the Grand Encampment of Knights
+          Templar of the United States of America. This archive serves the publication
+          as custodian and reading aid; original copyright remains with the publishers
+          and authors.
         </p>
       </div>
     </div>

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { Issue } from "@/lib/types";
-import { formatPublicationLabel } from "@/lib/utils";
 
 type IssueNavigatorProps = {
   prev: Issue | null;
@@ -38,13 +37,13 @@ export function IssueNavigator({ prev, next }: IssueNavigatorProps) {
                 className="font-ui text-cloister-stone"
                 style={{ fontSize: "0.75rem", letterSpacing: "0.08em", textTransform: "uppercase" }}
               >
-                Previous Issue
+                Previous issue
               </span>
               <span
-                className="font-display font-medium text-iron-gall"
-                style={{ fontSize: "var(--text-h4)", lineHeight: 1.25 }}
+                className="font-body text-iron-gall"
+                style={{ fontSize: "0.875rem", lineHeight: 1.35 }}
               >
-                {formatPublicationLabel(prev.publicationDate, prev.month, prev.year)}
+                {prev.title}
               </span>
             </div>
           </Link>
@@ -76,13 +75,13 @@ export function IssueNavigator({ prev, next }: IssueNavigatorProps) {
                 className="font-ui text-cloister-stone"
                 style={{ fontSize: "0.75rem", letterSpacing: "0.08em", textTransform: "uppercase" }}
               >
-                Next Issue
+                Next issue
               </span>
               <span
-                className="font-display font-medium text-iron-gall"
-                style={{ fontSize: "var(--text-h4)", lineHeight: 1.25 }}
+                className="font-body text-iron-gall"
+                style={{ fontSize: "0.875rem", lineHeight: 1.35 }}
               >
-                {formatPublicationLabel(next.publicationDate, next.month, next.year)}
+                {next.title}
               </span>
             </div>
             <ChevronRight

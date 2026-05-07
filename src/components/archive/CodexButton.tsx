@@ -37,7 +37,7 @@ export function CodexButton({ slug, variant = "compact" }: CodexButtonProps) {
           color: isSaved ? "var(--color-templar-red)" : "var(--color-seal-wax)",
           transitionDuration: "var(--duration-quick)",
         }}
-        aria-label={isSaved ? "Strike from Codex" : "Add to Codex"}
+        aria-label={isSaved ? "Strike from Records" : "Add to Codex"}
         aria-pressed={isSaved}
       >
         <CrossPattee
@@ -65,7 +65,7 @@ export function CodexButton({ slug, variant = "compact" }: CodexButtonProps) {
         cursor: "pointer",
         transitionDuration: "var(--duration-quick)",
       }}
-      aria-label={isSaved ? "Strike from Codex" : "Add to Codex"}
+      aria-label={isSaved ? "Strike from Records" : "Add to Codex"}
       aria-pressed={isSaved}
     >
       <span style={{ color: isSaved ? "var(--color-vellum)" : "var(--color-stone)", display: "flex" }}>

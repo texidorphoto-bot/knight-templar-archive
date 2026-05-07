@@ -124,7 +124,7 @@ export function IssueCard({ issue, searchSnippet, query = "" }: IssueCardProps) 
           className="mt-2 inline-flex items-center gap-1.5 font-ui font-medium text-seal-wax no-underline transition-colors hover:text-templar-red"
           style={{ fontSize: "0.875rem", transitionDuration: "var(--duration-quick)" }}
         >
-          Open Issue
+          Open the issue
           <span aria-hidden="true" className="text-illumination">›</span>
         </Link>
       </div>

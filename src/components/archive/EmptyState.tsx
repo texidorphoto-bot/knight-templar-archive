@@ -8,8 +8,8 @@ type EmptyStateProps = {
 };
 
 export function EmptyState({
-  title = "No records bear this entry.",
-  description = "Refine your search, or browse collections below.",
+  title = "No issues match the search.",
+  description = "Adjust the filters or return to the full catalog.",
   resetHref = "/",
 }: EmptyStateProps) {
   return (

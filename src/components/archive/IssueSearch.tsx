@@ -14,7 +14,7 @@ export function IssueSearch({
   initialValue = "",
   onSubmit,
   label = "Search the Archive",
-  placeholder = "Search the Archive — title, topic, article, or text",
+  placeholder = "Search the record…",
 }: IssueSearchProps) {
   const [value, setValue] = useState(initialValue);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
