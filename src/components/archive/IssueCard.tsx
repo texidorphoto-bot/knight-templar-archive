@@ -4,13 +4,17 @@ import { FileText } from "lucide-react";
 import type { Issue } from "@/lib/types";
 import { TopicBadge } from "@/components/archive/TopicBadge";
 import { formatPublicationLabel } from "@/lib/utils";
+import { highlightTerms } from "@/lib/highlight";
+import { CodexButton } from "@/components/archive/CodexButton";
 
 type IssueCardProps = {
   issue: Issue;
   searchSnippet?: string | null;
+  /** Active search query — when present, matching tokens are highlighted. */
+  query?: string;
 };
 
-export function IssueCard({ issue, searchSnippet }: IssueCardProps) {
+export function IssueCard({ issue, searchSnippet, query = "" }: IssueCardProps) {
   const href = `/issues/${issue.slug}`;
   const dateLabel = formatPublicationLabel(issue.publicationDate, issue.month, issue.year);
   const visibleTopics = issue.topics.slice(0, 3);
@@ -44,6 +48,11 @@ export function IssueCard({ issue, searchSnippet }: IssueCardProps) {
             <span className="sr-only">No cover image available</span>
           </div>
         )}
+        {/* Codex save button — top right over cover */}
+        <div className="absolute right-2 top-2 z-10">
+          <CodexButton slug={issue.slug} variant="compact" />
+        </div>
+
         {/* Single-pixel gold rule below cover, per §7.2 */}
         <div
           className="absolute bottom-0 left-0 right-0 h-px"
@@ -72,7 +81,7 @@ export function IssueCard({ issue, searchSnippet }: IssueCardProps) {
             className="no-underline hover:underline"
             style={{ textDecorationColor: "var(--color-illumination)", textUnderlineOffset: "3px" }}
           >
-            {issue.title}
+            {highlightTerms(issue.title, query)}
           </Link>
         </h3>
 
@@ -81,7 +90,7 @@ export function IssueCard({ issue, searchSnippet }: IssueCardProps) {
           className="line-clamp-3 font-body text-iron-gall-soft leading-relaxed"
           style={{ fontSize: "0.9375rem" }}
         >
-          {issue.description}
+          {highlightTerms(issue.description, query)}
         </p>
 
         {/* Search snippet */}
@@ -90,7 +99,7 @@ export function IssueCard({ issue, searchSnippet }: IssueCardProps) {
             className="rounded border border-vellum-warm bg-vellum px-3 py-2 font-body italic leading-relaxed text-iron-gall-soft"
             style={{ fontSize: "0.875rem" }}
           >
-            {searchSnippet}
+            {highlightTerms(searchSnippet, query)}
           </p>
         ) : null}
 

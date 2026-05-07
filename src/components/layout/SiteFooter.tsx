@@ -45,6 +45,13 @@ export function SiteFooter() {
               Archive
             </Link>
             <Link
+              href="/codex"
+              className="font-ui text-iron-gall-soft no-underline transition-colors duration-quick hover:text-iron-gall"
+              style={{ fontSize: "0.875rem" }}
+            >
+              Codex
+            </Link>
+            <Link
               href="/about"
               className="font-ui text-iron-gall-soft no-underline transition-colors duration-quick hover:text-iron-gall"
               style={{ fontSize: "0.875rem" }}

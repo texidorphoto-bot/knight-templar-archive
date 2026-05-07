@@ -4,11 +4,14 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 
-import { getAllIssues, getIssueBySlug, getRelatedIssues } from "@/lib/issues";
+import { getAllIssues, getIssueBySlug, getRelatedIssues, getAdjacentIssues } from "@/lib/issues";
 import { IssueMetadata } from "@/components/archive/IssueMetadata";
 import { MagazineViewerLoader as MagazineViewer } from "@/components/archive/MagazineViewerLoader";
 import { TopicBadge } from "@/components/archive/TopicBadge";
 import { IssueCard } from "@/components/archive/IssueCard";
+import { IssueNavigator } from "@/components/archive/IssueNavigator";
+import { CitationTrigger } from "@/components/archive/CitationTrigger";
+import { CodexButton } from "@/components/archive/CodexButton";
 import { formatPublicationLabel } from "@/lib/utils";
 
 type PageProps = {
@@ -43,6 +46,7 @@ export default function IssueDetailPage({ params }: PageProps) {
   }
 
   const related = getRelatedIssues(issue.slug, 3);
+  const adjacent = getAdjacentIssues(issue.slug);
   const dateLabel = formatPublicationLabel(issue.publicationDate, issue.month, issue.year);
 
   return (
@@ -103,8 +107,14 @@ export default function IssueDetailPage({ params }: PageProps) {
             {issue.summary ?? issue.description}
           </p>
 
+          {/* Action row: Cite + Codex */}
+          <div className="mt-5 flex items-center gap-5">
+            <CitationTrigger issue={issue} />
+            <CodexButton slug={issue.slug} variant="full" />
+          </div>
+
           {/* Topic badges */}
-          <div className="mt-5 flex flex-wrap gap-1.5">
+          <div className="mt-4 flex flex-wrap gap-1.5">
             {issue.topics.map((topic) => (
               <TopicBadge
                 key={topic}
@@ -181,6 +191,11 @@ export default function IssueDetailPage({ params }: PageProps) {
           incomplete until the PDF is re-processed with OCR.
         </p>
       ) : null}
+
+      {/* Previous / Next navigator */}
+      <section className="mt-10">
+        <IssueNavigator prev={adjacent.prev} next={adjacent.next} />
+      </section>
 
       {/* Related issues */}
       {related.length > 0 ? (

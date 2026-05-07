@@ -28,6 +28,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* Inline script runs before paint to set data-theme and avoid flash */}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('templar-theme');if(t==='night'){document.documentElement.setAttribute('data-theme','night');}else if(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','night');}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
         className="flex min-h-screen flex-col"
         style={{

@@ -266,6 +266,14 @@
   box-shadow: var(--shadow-illuminated);
 }
 
+/* Search result highlight mark */
+mark {
+  background: rgba(176, 141, 46, 0.22);
+  color: var(--color-iron-gall);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
 /* Text balance utility */
 @layer utilities {
   .text-balance {

@@ -33,6 +33,26 @@ export function getAllTopics(): string[] {
 }
 
 /**
+ * Return the chronologically adjacent issues (by publicationDate).
+ * `prev` is the issue immediately before; `next` is immediately after.
+ * Either can be null at the edges of the collection.
+ */
+export function getAdjacentIssues(slug: string): {
+  prev: Issue | null;
+  next: Issue | null;
+} {
+  const sorted = [...ISSUES].sort((a, b) =>
+    a.publicationDate.localeCompare(b.publicationDate)
+  );
+  const index = sorted.findIndex((issue) => issue.slug === slug);
+  if (index === -1) return { prev: null, next: null };
+  return {
+    prev: index > 0 ? sorted[index - 1] : null,
+    next: index < sorted.length - 1 ? sorted[index + 1] : null,
+  };
+}
+
+/**
  * Find issues that share at least one topic with the given issue,
  * excluding the issue itself. Used on the detail page for "Related Issues".
  */

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CrossPattee } from "@/components/icons/CrossPattee";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 export function SiteHeader() {
   return (
@@ -37,7 +38,9 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          {/* Primary navigation */}
+          {/* Night mode toggle + Primary navigation */}
+          <div className="flex items-center gap-4">
+          <ThemeToggle />
           <nav aria-label="Primary" className="flex items-center gap-6">
             <Link
               href="/"
@@ -47,6 +50,13 @@ export function SiteHeader() {
               Archive
             </Link>
             <Link
+              href="/codex"
+              className="font-ui text-iron-gall-soft no-underline transition-colors duration-quick ease-quick hover:text-iron-gall"
+              style={{ fontSize: "0.875rem" }}
+            >
+              Codex
+            </Link>
+            <Link
               href="/about"
               className="font-ui text-iron-gall-soft no-underline transition-colors duration-quick ease-quick hover:text-iron-gall"
               style={{ fontSize: "0.875rem" }}
@@ -54,6 +64,7 @@ export function SiteHeader() {
               About
             </Link>
           </nav>
+          </div>
         </div>
       </header>
 

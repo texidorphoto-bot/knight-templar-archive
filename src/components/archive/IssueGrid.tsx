@@ -16,6 +16,7 @@ export function IssueGrid({ issues, query }: IssueGridProps) {
           key={issue.id}
           issue={issue}
           searchSnippet={query ? buildSearchSnippet(issue, query) : null}
+          query={query}
         />
       ))}
     </div>
