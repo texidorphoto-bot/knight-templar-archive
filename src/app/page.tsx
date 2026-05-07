@@ -48,7 +48,6 @@ export default function HomePage({ searchParams }: HomePageProps) {
     >
       {/* Page header */}
       <section className="mb-10" style={{ maxWidth: "var(--max-reading)" }}>
-        <p className="overline mb-3">The Archive · Vol. I–Vol. LXXI</p>
         <h1
           className="font-display font-medium text-iron-gall text-balance"
           style={{ fontSize: "var(--text-h1)", lineHeight: 1.1 }}
